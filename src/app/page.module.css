@@ -1,20 +1,22 @@
 :root {
-  --bg-color: #0f172a;
-  --card-bg: #1e293b;
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
+  /* Soft Light Palette */
+  --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --card-bg: rgba(255, 255, 255, 0.7); /* Translucent white */
+  --text-main: #1e293b;
+  --text-muted: #64748b;
   --accent-color: #3b82f6;
   --accent-hover: #2563eb;
   --danger: #ef4444;
   --success: #10b981;
-  --border-color: #334155;
+  --border-color: rgba(255, 255, 255, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.2);
 }
 
 .main-wrapper {
   min-height: 100vh;
-  background-color: var(--bg-color);
+  background: var(--bg-gradient);
   color: var(--text-main);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-plus-jakarta), sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,20 +37,23 @@
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
-  background: linear-gradient(to right, #3b82f6, #60a5fa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #1e293b;
+  letter-spacing: -0.02em;
 }
 
 .app-header p {
   color: var(--text-muted);
+  font-weight: 500;
 }
 
+/* The Glass Card */
 .editor-card {
   background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px); /* Glass blur */
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid var(--border-color);
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
 
@@ -57,45 +62,49 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 20px;
-  background: rgba(15, 23, 42, 0.5);
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.4);
   border-bottom: 1px solid var(--border-color);
 }
 
 .format-group {
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
 .btn-tool {
-  background: #334155;
-  border: none;
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  color: var(--text-main);
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
   cursor: pointer;
   font-size: 1.1rem;
-  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-tool:hover {
   background: var(--accent-color);
+  color: white;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .bold { font-weight: 800; }
 .italic { font-style: italic; }
 .bold-italic { font-weight: 800; font-style: italic; }
-.mono { font-family: monospace; }
+.mono { font-family: 'Courier New', Courier, monospace; }
 
 .btn-clear {
-  background: transparent;
+  background: rgba(239, 68, 68, 0.08);
   color: var(--danger);
-  border: 1px solid var(--danger);
-  padding: 6px 12px;
-  border-radius: 6px;
+  border: 1px solid rgba(239, 68, 68, 0.1);
+  padding: 8px 16px;
+  border-radius: 10px;
   font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -107,20 +116,53 @@
 
 /* Textarea Styling */
 .input-wrapper {
-  padding: 0;
+  padding: 10px;
 }
 
 .main-textarea {
   width: 100%;
-  min-height: 300px;
+  min-height: 320px;
   background: transparent;
   border: none;
-  padding: 20px;
+  padding: 15px;
   color: var(--text-main);
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 1.15rem;
+  line-height: 1.7;
   resize: vertical;
   outline: none;
+  font-family: inherit;
+}
+
+.main-textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* Progress & Counter */
+.counter-container {
+  padding: 0 25px;
+  margin-bottom: 20px;
+}
+
+.progress-wrapper {
+  width: 100%;
+  height: 6px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+.char-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: right;
+  font-weight: 600;
 }
 
 /* Footer Actions */
@@ -128,8 +170,8 @@
   display: flex;
   justify-content: flex-end;
   gap: 12px;
-  padding: 16px 20px;
-  background: rgba(15, 23, 42, 0.5);
+  padding: 20px 25px;
+  background: rgba(255, 255, 255, 0.4);
   border-top: 1px solid var(--border-color);
 }
 
@@ -137,29 +179,27 @@
   background: var(--accent-color);
   color: white;
   border: none;
-  padding: 10px 24px;
-  border-radius: 8px;
-  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 14px;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.2);
+  transition: all 0.2s;
 }
 
 .btn-primary:hover {
   background: var(--accent-hover);
+  transform: scale(1.02);
 }
 
 .btn-secondary {
-  background: transparent;
+  background: white;
   color: var(--text-muted);
-  border: 1px solid var(--border-color);
-  padding: 10px 20px;
-  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 12px 24px;
+  border-radius: 14px;
+  font-weight: 600;
   cursor: pointer;
-}
-
-.btn-secondary:hover {
-  background: var(--border-color);
-  color: white;
 }
 
 .dev-footer {
@@ -167,40 +207,9 @@
   margin-top: 2rem;
   font-size: 0.9rem;
   color: var(--text-muted);
-}
-
-.counter-container {
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
-.progress-wrapper {
-  width: 100%;
-  height: 6px;
-  background-color: #334155; /* Dark background */
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 8px;
-}
-
-.progress-bar {
-  height: 100%;
-  background-color: #3b82f6; /* Blue fill */
-  transition: width 0.3s ease, background-color 0.3s ease;
-}
-
-.bg-danger {
-  background-color: #ef4444 !important; /* Red when limit exceeded */
-}
-
-.char-text {
-  font-size: 0.85rem;
-  color: #94a3b8;
-  text-align: right;
   font-weight: 500;
 }
 
-.text-danger {
-  color: #ef4444 !important;
-  font-weight: 700;
-}
+/* Success/Danger Helpers */
+.bg-danger { background-color: var(--danger) !important; }
+.text-danger { color: var(--danger) !important; }

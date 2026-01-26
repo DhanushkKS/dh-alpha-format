@@ -1,19 +1,22 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { formatters, clearFormatting } from "@/utils/formatters";
 import styles from "@/app/page.module.css";
 import { FormatButton } from "@/components/format-button";
 
 export default function Editor() {
   const [text, setText] = useState<string>("");
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const charLimit = 3000;
   const currentCharCount = text.length;
   const isOverLimit = currentCharCount > charLimit;
   const progressWidth = Math.min((currentCharCount / charLimit) * 100, 100);
-
 
   const handleTextTransformation = (
     transformFn: (selectedText: string) => string,
@@ -124,7 +127,13 @@ export default function Editor() {
             isOverLimit ? styles["text-danger"] : ""
           }`}
         >
-          {currentCharCount.toLocaleString()} / {charLimit.toLocaleString()}{" "}
+          {mounted ? (
+            <>
+              {currentCharCount.toLocaleString()} / {charLimit.toLocaleString()}
+            </>
+          ) : (
+            `0 / ${charLimit.toLocaleString()}`
+          )}{" "}
           Characters
         </div>
       </div>
