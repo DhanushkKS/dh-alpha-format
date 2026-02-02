@@ -1,11 +1,14 @@
 import styles from "./page.module.css";
 import { Metadata } from "next";
 import Editor from "@/components/editor";
+import {google} from "@ai-sdk/google";
 
 export const metadata: Metadata = {
   title: "AlphaFormat | LinkedIn Post Formatter",
   description: "Style your LinkedIn posts with Bold, Italic, and Monospace text generators.",
 };
+
+
 
 export default function LinkedInFormatterPage() {
   return (
