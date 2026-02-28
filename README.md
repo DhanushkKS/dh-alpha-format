@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AlphaFormat
 
-## Getting Started
+AlphaFormat is a professional text formatting tool designed specifically for LinkedIn creators. It allows users to bypass LinkedIn's native formatting limitations by converting standard text into bold, italic, and monospace Unicode characters, making your posts stand out and drive more engagement.
 
-First, run the development server:
+## Screenshots
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Figure 1: The main editor interface with real-time text formatting.
+![Main Editor Interface](https://github.com/DhanushkKS/dh-alpha-format/blob/master/public/screenshot_1.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* **Unicode Text Formatting:** Instantly apply Bold, Italic, and Monospace styles to your text to create highly engaging LinkedIn posts.
+* **Real-time Preview:** See exactly how your formatted text will look before you copy it.
+* **Responsive Design:** A clean, modern, and fully responsive UI built with CSS Modules and semantic HTML, ensuring a seamless experience across all devices.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tech Stack
 
-## Learn More
+* **Framework:** Next.js 16 (App Router)
+* **Language:** TypeScript
+* **Styling:** CSS Modules
+* **Deployment:** Vercel
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
